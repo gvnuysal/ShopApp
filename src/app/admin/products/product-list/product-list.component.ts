@@ -17,8 +17,8 @@ export class ProductListComponent implements OnInit {
     return this.productRepository.getProducts();
   }
 
-  deleteProduct(item:Product){
-    
+  deleteProduct(product:Product){
+    this.productRepository.deleteProduct(product);
   }
 
 }

@@ -21,10 +21,11 @@ export class ProductRepository implements OnInit {
     else return this.products;
   }
   saveProduct(product: Product) {
-    if (product.id == null || product.id == 0 || product.id==undefined) {
-      this.restService
-        .addProduct(product)
-        .subscribe((p) => {console.log(p); this.products.push(p)});
+    if (product.id == null || product.id == 0 || product.id == undefined) {
+      this.restService.addProduct(product).subscribe((p) => {
+        console.log(p);
+        this.products.push(p);
+      });
     } else {
       this.restService.updateProduct(product).subscribe((product) => {
         this.products.splice(
@@ -34,5 +35,14 @@ export class ProductRepository implements OnInit {
         );
       });
     }
+  }
+
+  deleteProduct(product: Product) {
+    this.restService.deleteProduct(product).subscribe((p) =>
+      this.products.splice(
+        this.products.findIndex((p) => p.id == product.id),
+        1
+      )
+    );
   }
 }
