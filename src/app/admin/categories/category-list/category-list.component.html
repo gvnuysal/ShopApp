@@ -1,1 +1,36 @@
-<p>category-list works!</p>
+<div class="text-right mb-3">
+     <button class="btn btn-success" routerLink="/admin/main/categories/create">
+       Add Category
+     </button>
+   </div>
+   <table class="table table-hover table-stripped">
+     <thead>
+       <tr>
+ 
+         <th>Name</th>
+   
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let p of getCategories()">
+        
+         <td>
+           {{ p.name }}
+         </td>
+        
+         <td>
+           <button
+             class="btn btn-warning btn-sm"
+             [routerLink]="['/admin/main/categories/edit', p.id]"
+           >
+             Edit
+           </button>
+           <button class="btn btn-danger btn-sm ml-1" (click)="deleteCategory(p)">
+             Delete
+           </button>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   

@@ -1,1 +1,15 @@
-<p>category-form works!</p>
+<h5>{{ editing ? "Edit" : "Create" }} Category</h5>
+
+<form #form="ngForm" (ngSubmit)="save()">
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" name="name" [(ngModel)]="category.name" />
+  </div>
+    
+  <button class="btn btn-warning btn-sm mr-1" routerLink="/admin/main/category">
+    Cancel
+  </button>
+  <button class="btn btn-primary btn-sm" type="submit">
+    {{ editing ? "Edit" : "Create" }} Category
+  </button>
+</form>

@@ -20,6 +20,7 @@ export class ProductRepository implements OnInit {
       return this.products.filter((p) => p.category == category.name);
     else return this.products;
   }
+  
   saveProduct(product: Product) {
     if (product.id == null || product.id == 0 || product.id == undefined) {
       this.restService.addProduct(product).subscribe((p) => {
